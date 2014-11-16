@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+<script>
+function customersController($scope,$http) {
+    $http.get("http://www.w3schools.com/website/Customers_JSON.php")
+    .success(function(response) {$scope.names = response;});
+}
+</script>
+<style>
+table, th , td {
+  border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 5px;
+}
+table tr:nth-child(odd) {
+  background-color: #f1f1f1;
+}
+table tr:nth-child(even) {
+  background-color: #ffffff;
+}
+</style>
+</head>
+
+<body>
+<div ng-app="" ng-controller="customersController"> 
+
+<ul>
+  <li ng-repeat="x in names">
+    {{ x.Name + ', ' + x.Country }}
+  </li>
+</ul>
+Search by Name and Country(Oredr by country by default):<input type="text" ng-model="test">
+
+<ul>
+  <li ng-repeat="x in names | filter:test | orderBy:'country'">
+    {{ (x.Name | uppercase) + ', ' + x.country }}
+  </li>
+</ul>
+
+<table>
+  <tr ng-repeat="x in names">
+    <td>{{ x.Name }}</td>
+    <td>{{ x.Country }}</td>
+  </tr>
+</table>
+Order by Filter------
+<table>
+  <tr ng-repeat="x in names | orderBy : 'Country'">
+    <td>{{ x.Name }}</td>
+    <td>{{ x.Country }}</td>
+  </tr>
+</table>
+
+</div>
+</body>
+</html>

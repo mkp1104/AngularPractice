@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+<script>
+function personController($scope) {
+    $scope.firstName = "John";
+    $scope.lastName = "Doe";
+}
+</script>
+</head>
+
+<body>
+<div ng-app="" ng-init="quantity=1;cost=5;firstName1='John';lastName1='Doe';person={firstName:'John',lastName:'Doe'};points=[1,15,19,2,40];names=['Jani','Hege','Kai'];namesArrayObject=[
+{name:'Jani',country:'Norway'},
+{name:'Hege',country:'Sweden'},
+{name:'Kai',country:'Denmark'}]" ng-controller="personController">
+using controller:
+<br>
+First Name: <input type="text" ng-model="firstName"><br>
+Last Name: <input type="text" ng-model="lastName"><br>
+<br>
+using expression:
+<br>
+Full Name: {{firstName + " " + lastName}}
+<br>
+using expression:
+
+<p>Total in dollar: {{ quantity * cost }}</p>
+using ng-bind:
+<p>Total in dollar: <span ng-bind="quantity * cost"></span></p>
+using Expression:
+<p>The name is {{ firstName1 + " " + lastName1 }}</p>
+using ng-bind with 'p' and 'span':
+<p>The name is <span ng-bind="firstName1 + ' ' + lastName1"></span></p>
+using ng-bind with 'span':
+The name is <span ng-bind="firstName1 + ' ' + lastName1"></span>
+<br>using ng-bind with 'div':
+The name is <div ng-bind="firstName1 + ' ' + lastName1"></div>
+<br>using ng-bind with 'text':
+The name is <text ng-bind="firstName1 + ' ' + lastName1"></text>
+<p>The lastName is (Person object of ng-init) : {{ person.lastName }}</p>
+<br>using ng-bind :
+<p>The lastName is <span ng-bind="person.lastName"></span></p>
+Array:
+<p>The points are {{ points[2] }}</p>
+<br>using ng-bind :
+<p>The points are <span ng-bind="points[2]"></span></p>
+<br>ng-repeat:
+<ul>
+    <li ng-repeat="x in names">
+      {{ x }}
+    </li>
+  </ul>
+ <br>ng-repeat in div: 
+ <div ng-repeat="x in names">{{x}}</div>
+ <br>ng-repeat in span: 
+ <span ng-repeat="x in names">{{x}}</span>
+<br>ng-repeat in p: 
+ <p ng-repeat="x in names">{{x}}</p>
+
+<br>namesArrayObject ng-repeat:
+<ul>
+  <li ng-repeat="x	in namesArrayObject">
+    {{ x.name + ', ' + x.country }}
+  </li>
+</ul>
+
+</body>
+</html>
